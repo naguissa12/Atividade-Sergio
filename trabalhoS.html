@@ -20,12 +20,8 @@
 	<script type="text/javascript" src="../js/scriptinicial.js"></script>
 	
     <style>
-
-		*{
-			margin: 5px;
-		}
         /* Estilos CSS para o modal, formulário, etc. */
-		
+
         .modal-active {
            background-color: rgba(0, 0, 0, 0.5);
            filter: grayscale(0.8);
@@ -82,7 +78,7 @@
 						type: 'POST',
 					    //Comando para carregar o PHP
 					    //url: 'view/cad_paises.php',
-						url: 'cad_camp.html',
+						url: 'cad_paises.html',
 						data: { Versao: '0.1.7',operacao:_Tecla},  
 						error: function() {
 									 alert('Erro ao tentar ação!');
@@ -124,8 +120,8 @@
 		//Função de limpeza de campos do formulario
 		function LimpaCampos(){
 			document.getElementById('id_campo').textContent = '0'; //limpa o codigo ID do formulario
-			document.getElementById('campanha').value = ''; //limpa o nome da campanha
-			document.getElementById('Hexagrama').value = ''; //limpa o Hexagrama	
+			document.getElementById('pais').value = ''; //limpa o nome do pais
+			document.getElementById('trigrama').value = ''; //limpa o trigrama	
 		}
     </script>
 
@@ -133,9 +129,9 @@
 	
 	<script>
 		  
-		    const filePath = 'gra_campanhas.php'; //
+		    const filePath = 'gra_paises.php'; //
 	
-			function GravaCampanhas(_Tecla)
+			function GravaPaises(_Tecla)
 			{
 				ajax = iniciaAjax(); 
 				
@@ -143,8 +139,8 @@
 				console.log('Variaveis Inicio');
 				console.log(_Tecla);
 				console.log(document.getElementById('id_campo').textContent);
-				console.log(document.getElementById('campanha').value);
-				console.log(document.getElementById('Hexagrama').value);
+				console.log(document.getElementById('pais').value);
+				console.log(document.getElementById('trigrama').value);
 				
                 //Area de testes e validação dos campos antes da gravação
 				
@@ -156,8 +152,8 @@
 									Operador:'G',
 								    SubOperador:_Tecla,
 									ID:document.getElementById('id_campo').textContent,
-									Pais:document.getElementById('campanha').value,
-								    Trigrama:document.getElementById('Hexagrama').value,
+									Pais:document.getElementById('pais').value,
+								    Trigrama:document.getElementById('trigrama').value
 								  },  
 							error: function() {
 										 alert('Erro ao tentar ação!');
@@ -167,10 +163,10 @@
 								         //alert(texto_retorno);
 
 								         if (VerificarValorNaString(texto_retorno,"Erro ")){
-											 alert('Erro ao tentar gravar a campanha, contate o administrador.');
+											 alert('Erro ao tentar gravar o pais, contate o administrador.');
 											 console.log(texto_retorno);
 										 }else{
-											 alert('campanha Gravado');
+											 alert('Pais Gravado');
 										 }
 										
 								   },
@@ -188,12 +184,12 @@
 		  if (acaoBotao === 'I') {
 			// Código para incluir dados
 			console.log("Incluindo dados...");
-			retorno = GravaCampanhas('I');
+			retorno = GravaPaises('I');
 			
 		  } else if (acaoBotao === 'E') {
 			// Código para editar dados
 			console.log("Editando dados...");
-			retorno = GravaCampanhas('E');
+			retorno = GravaPaises('E');
 			
 		  } else {
 			// Erro
@@ -273,13 +269,13 @@
                  </div>
 				 <div class="form-group col-md-5">
 					 
-					<label for="campanha">descrição da campanha </label>
+					<label for="pais">descrição da campanha </label>
 
 					<textarea id="texto_campanha" rows="4" cols="50">
 						
 					</textarea>
 				   
-					<small id="CampanhaHelp" class="form-text text-muted">disponibilizar um descrisão da campanha</small>
+					<small id="paisHelp" class="form-text text-muted">disponibilizar um descrisão da campanha</small>
 			   </div>
 			</div>
 			<div class="row">
